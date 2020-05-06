@@ -13,6 +13,11 @@ buildscript {
     }
 }
 
+plugins {
+    // Run with `./gradlew dependencyUpdates`
+    id "com.github.ben-manes.versions" version "0.27.0"
+}
+
 allprojects {
     repositories {
         google()
