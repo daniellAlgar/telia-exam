@@ -3,12 +3,16 @@
 *.aar
 *.ap_
 *.aab
+*.idea
 
 # Files for the ART/Dalvik VM
 *.dex
 
 # Java class files
 *.class
+
+# Mac files
+*.DS_Store
 
 # Generated files
 bin/
