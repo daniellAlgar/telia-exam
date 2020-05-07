@@ -1,0 +1,18 @@
+apply plugin: 'com.android.library'
+apply from: '../../android_commons.gradle'
+//apply from: '../../android_commons_test.gradle'
+
+dependencies {
+
+    // Modules
+    implementation project(Modules.remote)
+    api project(Modules.model)
+
+    // Koin
+    implementation(Libraries.koin)
+    implementation(Libraries.koinViewModel)
+
+    // Kotlin
+    implementation(KotlinLibraries.kotlinCoroutineCore)
+    implementation(KotlinLibraries.kotlinCoroutineAndroid)
+}

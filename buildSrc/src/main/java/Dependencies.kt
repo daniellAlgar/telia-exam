@@ -11,6 +11,7 @@ object Modules {
     const val app = ":app"
     const val model = ":data:model"
     const val remote = ":data:remote"
+    const val repository = ":data:repository"
 }
 
 object Versions {
