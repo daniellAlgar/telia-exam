@@ -13,7 +13,7 @@ object Modules {
 
 object Versions {
     const val compileSdk = 29
-    const val minSdk = 23
+    const val minSdk = 21
     const val targetSdk = 29
     const val kotlin = "1.3.72"
     const val gradle = "4.0.0-beta05"
