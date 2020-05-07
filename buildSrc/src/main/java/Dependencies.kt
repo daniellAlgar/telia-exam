@@ -9,6 +9,7 @@ object Releases {
 
 object Modules {
     const val app = ":app"
+    const val model = ":data:model"
 }
 
 object Versions {

@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Telia Exam"
+include ':data:model'
