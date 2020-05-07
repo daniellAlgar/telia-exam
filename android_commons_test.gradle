@@ -1,0 +1,25 @@
+dependencies {
+    testImplementation(TestLibraries.koin)
+    testImplementation(TestLibraries.junit)
+    testImplementation(TestLibraries.mockk)
+    testImplementation(TestLibraries.coroutine)
+    testImplementation(TestLibraries.archCoreTest)
+    testImplementation(TestLibraries.mockWebServer)
+
+    androidTestImplementation(TestLibraries.koin)
+    androidTestImplementation(TestLibraries.junit)
+    androidTestImplementation(TestLibraries.espresso)
+    androidTestImplementation(TestLibraries.coroutine)
+    androidTestImplementation(TestLibraries.testRules)
+    androidTestImplementation(TestLibraries.fragmentNav)
+    androidTestImplementation(TestLibraries.archCoreTest)
+    androidTestImplementation(TestLibraries.mockkAndroid)
+    androidTestImplementation(TestLibraries.espressoContrib)
+    androidTestImplementation(TestLibraries.androidTestRunner)
+
+    // Modules
+    //testImplementation project(Modules.commonTest)
+    //androidTestImplementation project(Modules.commonTest)
+
+    kaptAndroidTest TestLibraries.databinding
+}

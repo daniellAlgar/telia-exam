@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply from: '../../android_commons.gradle'
+apply from: '../../android_commons_test.gradle'
+
+dependencies {
+    // Kotlin
+    implementation(KotlinLibraries.kotlin)
+    implementation(KotlinLibraries.kotlinCoroutineCore)
+
+    // Data module
+    implementation project(Modules.model)
+
+    // Network
+    implementation(Libraries.retrofit)
+    implementation(Libraries.retrofitGsonConverter)
+    implementation(Libraries.httpLoggingInterceptor)
+    implementation(Libraries.gson)
+
+    // Koin
+    implementation(Libraries.koin)
+}
