@@ -18,8 +18,8 @@ dependencies {
     androidTestImplementation(TestLibraries.androidTestRunner)
 
     // Modules
-    //testImplementation project(Modules.commonTest)
-    //androidTestImplementation project(Modules.commonTest)
+    testImplementation project(Modules.commonTest)
+    androidTestImplementation project(Modules.commonTest)
 
     kaptAndroidTest TestLibraries.databinding
 }

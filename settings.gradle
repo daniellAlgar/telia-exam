@@ -1,9 +1,11 @@
 include ':app'
+include ':common_test'
 
 // Features
 include ':features:home'
 
 // Data
 include ':data:model'
+include ':data:local'
 include ':data:remote'
 include ':data:repository'

@@ -10,9 +10,11 @@ object Releases {
 object Modules {
     const val app = ":app"
     const val model = ":data:model"
+    const val local = ":data:local"
     const val remote = ":data:remote"
     const val repository = ":data:repository"
     const val home = ":features:home"
+    const val commonTest = ":common_test"
 }
 
 object Versions {
@@ -43,6 +45,7 @@ object Versions {
     const val databinding = "4.1.0-alpha04"
     const val glide = "4.11.0"
     const val testRules = "1.3.0-alpha05"
+    const val room = "2.2.5"
 }
 
 object Libraries {
@@ -55,6 +58,11 @@ object Libraries {
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val httpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+
+    // Room
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomRunTime = "androidx.room:room-runtime:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
 
     // Glide
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"

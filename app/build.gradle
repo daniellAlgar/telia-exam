@@ -12,6 +12,7 @@ dependencies {
     // Modules
     implementation project(Modules.repository)
     implementation project(Modules.remote)
+    implementation project(Modules.local)
 
     // Koin
     implementation(Libraries.koin)

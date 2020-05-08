@@ -2,5 +2,9 @@ apply plugin: 'com.android.library'
 apply from: '../../android_commons.gradle'
 
 dependencies {
+
+    // Room
+    implementation(Libraries.roomRunTime)
+
     implementation(Libraries.gson)
 }

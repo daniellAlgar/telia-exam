@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+
+dependencies {
+
+    // Modules
+    implementation project(Modules.model)
+
+    // Test
+    implementation TestLibraries.androidTestRunner
+
+    // Other libraries
+    implementation Libraries.koin
+}

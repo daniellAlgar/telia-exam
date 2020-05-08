@@ -1,0 +1,27 @@
+apply plugin: 'com.android.library'
+apply from: '../../android_commons.gradle'
+apply from: '../../android_commons_test.gradle'
+
+android {
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+
+    // Room
+    kapt Libraries.roomCompiler
+    implementation(Libraries.roomKtx)
+    implementation(Libraries.roomRunTime)
+
+    // Koin
+    implementation(Libraries.koin)
+    implementation(Libraries.koinViewModel)
+
+    // Data module
+    implementation project(Modules.model)
+
+    // Gson
+    implementation(Libraries.gson)
+}
