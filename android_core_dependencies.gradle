@@ -1,0 +1,16 @@
+/**
+ * Shared dependencies between modules
+ */
+dependencies {
+    // Kotlin
+    implementation(KotlinLibraries.kotlin)
+
+    // Android
+    implementation(AndroidLibraries.appCompat)
+    implementation(AndroidLibraries.coreKtx)
+    implementation(AndroidLibraries.constraintLayout)
+    implementation(AndroidLibraries.lifecycleViewModel)
+    implementation(AndroidLibraries.recyclerView)
+    implementation(AndroidLibraries.navigation)
+    implementation(AndroidLibraries.navigationFrag)
+}

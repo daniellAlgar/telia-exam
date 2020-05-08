@@ -1,0 +1,29 @@
+apply plugin: "com.android.library"
+apply from: '../../android_commons.gradle'
+apply from: '../../android_core_dependencies.gradle'
+apply from: '../../android_commons_test.gradle'
+
+android {
+    compileOptions {
+        sourceCompatibility(JavaVersion.VERSION_1_8)
+        targetCompatibility(JavaVersion.VERSION_1_8)
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // Koin (because each feature has to handle its own dependencies)
+    implementation(Libraries.koin)
+    implementation(Libraries.koinViewModel)
+
+    // Glide
+    implementation(Libraries.glide)
+    annotationProcessor(Libraries.glideAnnotationProcessor)
+
+    // Modules
+    implementation project(Modules.model)
+    implementation project(Modules.repository)
+}

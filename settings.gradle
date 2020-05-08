@@ -1,4 +1,9 @@
 include ':app'
+
+// Features
+include ':features:home'
+
+// Data
 include ':data:model'
 include ':data:remote'
 include ':data:repository'

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TeamListItemStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_rhythm_16</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_rhythm_16</item>
+        <item name="android:textSize">@dimen/text_size_bread_text</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
