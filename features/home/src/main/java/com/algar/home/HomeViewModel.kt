@@ -1,29 +1,36 @@
 package com.algar.home
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
-import com.algar.model.GroupForecastResponse
+import androidx.lifecycle.*
+import com.algar.model.CurrentForecast
 import com.algar.repository.AppDispatchers
 import com.algar.repository.WeatherRepository
 import com.algar.repository.utils.Resource
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeViewModel(
     private val repository: WeatherRepository,
     private val dispatchers: AppDispatchers
 ) : ViewModel() {
 
-    private val _forecasts = MutableLiveData<Resource<GroupForecastResponse>>()
-    val forecasts: LiveData<Resource<GroupForecastResponse>> = _forecasts
+    private val _forecast = MediatorLiveData<Resource<List<CurrentForecast>>>()
+    val forecast: LiveData<Resource<List<CurrentForecast>>> = _forecast
+    private var forecastSource: LiveData<Resource<List<CurrentForecast>>> = MutableLiveData()
 
     init {
-        _forecasts.value = Resource.loading(data = null)
-        getForecasts()
+        _forecast.value = Resource.loading(data = null)
+        getCurrentForecast()
     }
 
-    private fun getForecasts() = viewModelScope.launch(dispatchers.io) {
-        _forecasts.value = repository.getGroupForecast()
+    private fun getCurrentForecast() = viewModelScope.launch(dispatchers.main) {
+        _forecast.removeSource(forecastSource)
+
+        withContext(dispatchers.io) {
+            forecastSource = repository.getGroupForecast()
+        }
+
+        _forecast.addSource(forecastSource) {
+            _forecast.value = it
+        }
     }
 }

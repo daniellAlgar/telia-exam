@@ -15,18 +15,11 @@
         android:layout_height="match_parent"
         tools:context=".HomeFragment">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/forecast_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/swipe_to_refresh_forecast"
-            app:showWhenLoading="@{viewModel.forecasts}">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/forecast_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-<!--                app:items="@{viewModel.forecasts}"-->
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            app:items="@{viewModel.forecast}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

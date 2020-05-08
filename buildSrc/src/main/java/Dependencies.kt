@@ -13,7 +13,7 @@ object Modules {
     const val local = ":data:local"
     const val remote = ":data:remote"
     const val repository = ":data:repository"
-    const val home = ":features:home"
+    const val featureHome = ":features:home"
     const val commonTest = ":common_test"
 }
 

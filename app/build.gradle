@@ -5,6 +5,10 @@ android {
     defaultConfig {
         applicationId ApplicationId.id
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -13,6 +17,8 @@ dependencies {
     implementation project(Modules.repository)
     implementation project(Modules.remote)
     implementation project(Modules.local)
+    implementation project(Modules.model)
+    implementation project(Modules.featureHome)
 
     // Koin
     implementation(Libraries.koin)

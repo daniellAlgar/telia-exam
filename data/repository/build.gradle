@@ -5,8 +5,9 @@ apply from: '../../android_commons.gradle'
 dependencies {
 
     // Modules
-    implementation project(Modules.remote)
-    api project(Modules.model)
+    api project(Modules.local)
+    api project(Modules.remote)
+    implementation project(Modules.model)
 
     // Koin
     implementation(Libraries.koin)
