@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Telia Exam</string>
+    <string name="home_toolbar_title">Current Weather</string>
 </resources>

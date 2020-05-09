@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
@@ -42,5 +43,10 @@ class HomeFragment : BaseFragment() {
 
     private fun getDividerItemDecorator() = DividerItemDecoration(context, RecyclerView.VERTICAL).apply {
         setDrawable(ContextCompat.getDrawable(context!!, R.drawable.divider_item_decorator)!!)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.home_toolbar_title)
     }
 }
