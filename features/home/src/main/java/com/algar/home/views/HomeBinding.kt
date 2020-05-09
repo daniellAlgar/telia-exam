@@ -1,9 +1,13 @@
 package com.algar.home.views
 
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.algar.model.CurrentForecast
+import com.algar.model.Secrets
 import com.algar.repository.utils.Resource
+import com.bumptech.glide.Glide
 
 object HomeBinding {
 
@@ -13,5 +17,24 @@ object HomeBinding {
         with(recyclerView.adapter as HomeAdapter) {
             update(items = resource)
         }
+    }
+
+    @BindingAdapter("android:text")
+    @JvmStatic
+    fun setFloat(view: TextView, value: Float?) {
+        view.text = if (value == null || value.isNaN()) {
+            "-"
+        } else {
+            "$value*C"
+        }
+    }
+
+    @BindingAdapter("app:loadImage")
+    @JvmStatic
+    fun loadImage(view: ImageView, code: String?) {
+        val imageUrl = Secrets.iconUrl + code + "@2x.png"
+        Glide.with(view.context)
+            .load(imageUrl)
+            .into(view)
     }
 }
