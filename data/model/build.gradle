@@ -11,4 +11,6 @@ dependencies {
 
     // Time
     implementation(Libraries.joda)
+
+    testImplementation(TestLibraries.junit)
 }
