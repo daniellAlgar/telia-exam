@@ -4,7 +4,6 @@
     <style name="CurrentForecastTitle">
         <item name="android:textSize">@dimen/text_size_title</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/vertical_rhythm_16</item>
         <item name="android:layout_marginStart">@dimen/horizontal_rhythm_40</item>
         <item name="android:layout_marginEnd">@dimen/horizontal_rhythm_8</item>
@@ -13,6 +12,7 @@
     <style name="CurrentForecastTemperature">
         <item name="android:textSize">@dimen/text_size_title</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:layout_marginBottom">@dimen/vertical_rhythm_16</item>
         <item name="android:layout_marginStart">@dimen/horizontal_rhythm_40</item>
     </style>

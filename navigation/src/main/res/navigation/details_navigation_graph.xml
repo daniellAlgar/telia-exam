@@ -7,8 +7,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.algar.details.DetailsFragment"
-        android:label="Details">
+        android:name="com.algar.details.DetailsFragment">
 
         <argument
             android:name="cityId"
