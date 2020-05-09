@@ -8,6 +8,7 @@ import com.algar.model.CurrentForecast
 import com.algar.model.Secrets
 import com.algar.repository.utils.Resource
 import com.bumptech.glide.Glide
+import kotlin.math.roundToInt
 
 object HomeBinding {
 
@@ -25,7 +26,9 @@ object HomeBinding {
         view.text = if (value == null || value.isNaN()) {
             "-"
         } else {
-            "$value*C"
+            val celsiusSymbol = "\u2103"
+            val tempWithoutDecimal = value.roundToInt()
+            "$tempWithoutDecimal$celsiusSymbol"
         }
     }
 
