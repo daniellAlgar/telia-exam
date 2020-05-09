@@ -1,20 +1,15 @@
 package com.algar.local
 
 import androidx.room.TypeConverter
-import com.algar.local.helpers.DateTimeSerializer
 import com.algar.model.FiveDayDetails
 import com.algar.model.MainForecast
 import com.algar.model.Weather
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import org.joda.time.DateTime
 
 class CurrentForecastTypeConverter {
 
-    private val gson: Gson = GsonBuilder()
-        .registerTypeAdapter(DateTime::class.java, DateTimeSerializer.INSTANCE)
-        .create()
+    private val gson = Gson()
 
     @TypeConverter
     fun weatherArrayFromString(weathers: String): ArrayList<Weather> {

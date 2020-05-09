@@ -5,6 +5,7 @@ include ':navigation'
 
 // Features
 include ':features:home'
+include ':features:details'
 
 // Data
 include ':data:model'

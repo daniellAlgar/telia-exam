@@ -34,4 +34,11 @@ class HomeViewModel(
             _forecast.value = it
         }
     }
+
+    fun onClickListenerFor(currentForecast: CurrentForecast) {
+        navigate(HomeFragmentDirections.actionHomeFragmentToDetailsNavigationGraph(
+            cityId = currentForecast.id,
+            cityName = currentForecast.name
+        ))
+    }
 }

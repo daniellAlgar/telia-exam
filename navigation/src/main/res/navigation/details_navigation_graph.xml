@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/details_navigation_graph"
+    app:startDestination="@id/detailsFragment">
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.algar.details.DetailsFragment"
+        android:label="Details">
+
+        <argument
+            android:name="cityId"
+            app:argType="integer"/>
+
+        <argument
+            android:name="cityName"
+            app:argType="string"/>
+    </fragment>
+</navigation>

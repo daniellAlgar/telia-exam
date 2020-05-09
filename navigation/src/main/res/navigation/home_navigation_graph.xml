@@ -8,5 +8,20 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.algar.home.HomeFragment">
+
+        <action
+            android:id="@+id/action_homeFragment_to_details_navigation_graph"
+            app:destination="@id/details_navigation_graph">
+
+            <argument
+                android:name="cityId"
+                app:argType="integer" />
+
+            <argument
+                android:name="cityName"
+                app:argType="string"/>
+        </action>
     </fragment>
+
+    <include app:graph="@navigation/details_navigation_graph"/>
 </navigation>

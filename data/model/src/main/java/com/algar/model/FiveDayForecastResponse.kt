@@ -6,6 +6,7 @@ data class FiveDayForecastResponse(
 )
 
 fun FiveDayForecastResponse.mapToFiveDayForecastWithId() = FiveDayForecast(
-    id = this.city.id,
-    list = this.list
+    id = city.id,
+    name = city.name,
+    list = list
 )

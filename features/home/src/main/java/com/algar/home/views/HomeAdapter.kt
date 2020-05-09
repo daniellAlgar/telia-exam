@@ -1,6 +1,6 @@
 package com.algar.home.views
 
-import android.view.LayoutInflater.*
+import android.view.LayoutInflater.from
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView

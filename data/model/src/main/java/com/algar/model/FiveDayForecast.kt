@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class FiveDayForecast(
     @PrimaryKey
     val id: Long,
+    val name: String,
     val list: ArrayList<FiveDayDetails>
 )
