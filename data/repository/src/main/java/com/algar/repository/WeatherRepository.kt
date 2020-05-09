@@ -40,7 +40,7 @@ class WeatherRepositoryImpl(
 
             override fun shouldFetch(data: FiveDayForecast?) = true
 
-            override fun loadFromDb(): LiveData<FiveDayForecast> = dao.getFiveDayForecast()
+            override fun loadFromDb(): LiveData<FiveDayForecast> = dao.getFiveDayForecast(id = cityId)
 
             override suspend fun createCall(): ApiResponse<FiveDayForecastResponse> = service.fetchFiveDayForecast(cityId = cityId)
         }.asLiveData()

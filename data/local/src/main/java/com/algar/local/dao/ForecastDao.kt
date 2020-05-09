@@ -17,6 +17,6 @@ interface ForecastDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(fiveDayForecast: FiveDayForecast)
 
-    @Query("SELECT * FROM FiveDayForecast")
-    fun getFiveDayForecast(): LiveData<FiveDayForecast>
+    @Query("SELECT * FROM FiveDayForecast WHERE id=:id")
+    fun getFiveDayForecast(id: Int): LiveData<FiveDayForecast>
 }
