@@ -6,5 +6,9 @@ dependencies {
     // Room
     implementation(Libraries.roomRunTime)
 
+    // Json
     implementation(Libraries.gson)
+
+    // Time
+    implementation(Libraries.joda)
 }

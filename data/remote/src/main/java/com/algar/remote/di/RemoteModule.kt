@@ -3,13 +3,16 @@ package com.algar.remote.di
 import com.algar.remote.NetworkService
 import com.algar.remote.DataSource
 import com.algar.remote.di.NamedInterceptor.*
+import com.algar.remote.helpers.DateTimeSerializer
 import com.algar.remote.helpers.Logger
 import com.algar.remote.helpers.RetrofitCurlPrinterInterceptor
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.joda.time.DateTime
 import org.koin.core.qualifier.Qualifier
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -61,7 +64,11 @@ fun remoteModule(baseUrl: String) = module {
     }
 
 
-    single { Gson() }
+    single<Gson>{
+        GsonBuilder()
+            .registerTypeAdapter(DateTime::class.java, DateTimeSerializer.INSTANCE)
+            .create()
+    }
 
     factory { get<Retrofit>().create(NetworkService::class.java) }
 

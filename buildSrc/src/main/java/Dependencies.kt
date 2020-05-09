@@ -49,6 +49,7 @@ object Versions {
     const val testRules = "1.3.0-alpha05"
     const val room = "2.2.5"
     const val safeArgs = "2.1.0-alpha01"
+    const val joda = "2.9.9"
 }
 
 object Libraries {
@@ -70,6 +71,9 @@ object Libraries {
     // Glide
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val glideAnnotationProcessor = "com.github.bumptech.glide:compiler:${Versions.glide}"
+
+    // Time
+    const val joda = "joda-time:joda-time:${Versions.joda}"
 }
 
 object KotlinLibraries {
