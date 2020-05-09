@@ -9,7 +9,7 @@ import java.net.HttpURLConnection
 class DataSourceTest : BaseTest() {
 
     @Test
-    fun `Fetching group forecast successfully returns Success with data`() {
+    fun `Fetching city group forecast successfully returns Success with data`() {
         mockHttpResponse(
             server = mockServer,
             fileName = "group_forecast.json",
@@ -20,8 +20,26 @@ class DataSourceTest : BaseTest() {
             val response = networkService.fetchGroupForecast()
             assert(response is Success)
             val forecasts = (response as Success).body
-            val expectedNrOfForecasts = 3
-            assertEquals(expectedNrOfForecasts, forecasts.list.size)
+            val expectedNumberOfForecasts = 3
+            assertEquals(expectedNumberOfForecasts, forecasts.list.size)
+        }
+    }
+
+    @Test
+    fun `Fetching 5 day forecast successfully returns Success with data`() {
+        val cityId = 2711537
+        mockHttpResponse(
+            server = mockServer,
+            fileName = "5_day_forecast.json",
+            code = HttpURLConnection.HTTP_OK
+        )
+
+        runBlocking {
+            val response = networkService.fetchFiveDayForecast(cityId = cityId)
+            assert(response is Success)
+            val forecast = (response as Success).body
+            val expectedNumberOfForecasts = 40
+            assertEquals(expectedNumberOfForecasts, forecast.list.size)
         }
     }
 }
