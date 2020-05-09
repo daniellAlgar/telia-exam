@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="horizontal_rhythm_32">32dp</dimen>
-    <dimen name="horizontal_rhythm_16">16dp</dimen>
-    <dimen name="vertical_rhythm_32">32dp</dimen>
-    <dimen name="vertical_rhythm_16">16dp</dimen>
-    <dimen name="vertical_rhythm_8">8dp</dimen>
-
     <dimen name="divider_item_decorator_height">20dp</dimen>
 </resources>
