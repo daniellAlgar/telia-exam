@@ -14,7 +14,9 @@ object Modules {
     const val remote = ":data:remote"
     const val repository = ":data:repository"
     const val featureHome = ":features:home"
+    const val common = ":common"
     const val commonTest = ":common_test"
+    const val navigation = ":navigation"
 }
 
 object Versions {
@@ -46,6 +48,7 @@ object Versions {
     const val glide = "4.11.0"
     const val testRules = "1.3.0-alpha05"
     const val room = "2.2.5"
+    const val safeArgs = "2.1.0-alpha01"
 }
 
 object Libraries {

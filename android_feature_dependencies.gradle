@@ -26,4 +26,6 @@ dependencies {
     // Modules
     implementation project(Modules.model)
     implementation project(Modules.repository)
+    implementation project(Modules.common)
+    implementation project(Modules.navigation)
 }

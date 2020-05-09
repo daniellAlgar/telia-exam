@@ -1,6 +1,7 @@
 package com.algar.home
 
 import androidx.lifecycle.*
+import com.algar.common.BaseViewModel
 import com.algar.model.CurrentForecast
 import com.algar.repository.AppDispatchers
 import com.algar.repository.WeatherRepository
@@ -11,7 +12,7 @@ import kotlinx.coroutines.withContext
 class HomeViewModel(
     private val repository: WeatherRepository,
     private val dispatchers: AppDispatchers
-) : ViewModel() {
+) : BaseViewModel() {
 
     private val _forecast = MediatorLiveData<Resource<List<CurrentForecast>>>()
     val forecast: LiveData<Resource<List<CurrentForecast>>> = _forecast

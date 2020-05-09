@@ -13,12 +13,18 @@ android {
 
 dependencies {
 
+    // Android
+    implementation(AndroidLibraries.navigation)
+    implementation(AndroidLibraries.navigationFrag)
+
     // Modules
     implementation project(Modules.repository)
     implementation project(Modules.remote)
     implementation project(Modules.local)
     implementation project(Modules.model)
     implementation project(Modules.featureHome)
+    implementation project(Modules.navigation)
+    implementation project(Modules.common)
 
     // Koin
     implementation(Libraries.koin)
