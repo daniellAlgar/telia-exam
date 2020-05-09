@@ -29,13 +29,14 @@ class DetailsFragment : BaseFragment() {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+        binding.cityId = args.cityId
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureRecyclerView()
-        viewModel.fetchTeamDetails(id = args.cityId)
+        viewModel.fetchFiveDayForecast(id = args.cityId)
     }
 
     private fun configureRecyclerView() {

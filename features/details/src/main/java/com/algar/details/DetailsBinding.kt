@@ -4,6 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.algar.model.FiveDayDetails
 import com.algar.model.FiveDayForecast
 import com.algar.model.Secrets
@@ -46,6 +47,14 @@ object DetailsBinding {
             val celsiusSymbol = "\u2103"
             val tempWithoutDecimal = value.roundToInt()
             "$tempWithoutDecimal$celsiusSymbol"
+        }
+    }
+
+    @BindingAdapter("app:showWhenLoading")
+    @JvmStatic
+    fun <T>showWhenLoading(view: SwipeRefreshLayout, resource: Resource<T>?) {
+        resource?.let {
+            view.isRefreshing = resource.status == Resource.Status.LOADING
         }
     }
 }

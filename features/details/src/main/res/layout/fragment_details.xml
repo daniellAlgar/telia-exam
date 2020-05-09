@@ -5,6 +5,9 @@
     
     <data>
         <variable
+            name="cityId"
+            type="Integer"/>
+        <variable
             name="viewModel"
             type="com.algar.details.DetailsViewModel" />
     </data>
@@ -13,16 +16,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/five_day_forecast_recycler_view"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_to_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:items="@{viewModel.fiveDayForecast}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:clipToPadding="false"
-            android:paddingTop="@dimen/vertical_rhythm_8"
-            android:paddingBottom="@dimen/vertical_rhythm_8"
             android:layout_marginStart="@dimen/horizontal_rhythm_16"
-            android:layout_marginEnd="@dimen/horizontal_rhythm_16"/>
+            android:layout_marginEnd="@dimen/horizontal_rhythm_16"
+            app:showWhenLoading="@{viewModel.fiveDayForecast}"
+            app:onRefreshListener="@{() -> viewModel.pullToRefreshForecasts(cityId)}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/five_day_forecast_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:items="@{viewModel.fiveDayForecast}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/vertical_rhythm_8"
+                android:paddingBottom="@dimen/vertical_rhythm_8" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

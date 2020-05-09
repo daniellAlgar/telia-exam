@@ -21,11 +21,11 @@ class DetailsViewModel(
     val fiveDayForecast: LiveData<Resource<FiveDayForecast>> = _fiveDayForecast
     private var fiveDayForecastSource: LiveData<Resource<FiveDayForecast>> = MutableLiveData()
 
-    fun fetchTeamDetails(id: Int) {
-        getTeamDetails(id = id)
+    fun fetchFiveDayForecast(id: Int) {
+        getFiveDayForecast(id = id)
     }
 
-    private fun getTeamDetails(id: Int) = viewModelScope.launch(dispatchers.main) {
+    private fun getFiveDayForecast(id: Int) = viewModelScope.launch(dispatchers.main) {
         _fiveDayForecast.removeSource(fiveDayForecastSource)
 
         withContext(dispatchers.io) {
@@ -36,4 +36,6 @@ class DetailsViewModel(
             _fiveDayForecast.value = it
         }
     }
+
+    fun pullToRefreshForecasts(cityId: Int) = fetchFiveDayForecast(id = cityId)
 }
