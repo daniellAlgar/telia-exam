@@ -4,6 +4,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.algar.model.CurrentForecast
 import com.algar.model.Secrets
 import com.algar.repository.utils.Resource
@@ -39,5 +40,13 @@ object HomeBinding {
         Glide.with(view.context)
             .load(imageUrl)
             .into(view)
+    }
+
+    @BindingAdapter("app:showWhenLoading")
+    @JvmStatic
+    fun <T>showWhenLoading(view: SwipeRefreshLayout, resource: Resource<T>?) {
+        resource?.let {
+            view.isRefreshing = resource.status == Resource.Status.LOADING
+        }
     }
 }

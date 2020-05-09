@@ -16,16 +16,24 @@
         tools:context=".HomeFragment"
         android:background="@color/default_background">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/forecast_recycler_view"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_group_forecast"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:items="@{viewModel.forecast}"
-            android:paddingTop="@dimen/vertical_rhythm_16"
-            android:paddingBottom="@dimen/vertical_rhythm_16"
-            android:clipToPadding="false"
             android:layout_marginStart="@dimen/horizontal_rhythm_16"
             android:layout_marginEnd="@dimen/horizontal_rhythm_16"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            app:showWhenLoading="@{viewModel.forecast}"
+            app:onRefreshListener="@{() -> viewModel.pullToRefreshForecasts()}">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/forecast_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:items="@{viewModel.forecast}"
+                android:paddingTop="@dimen/vertical_rhythm_16"
+                android:paddingBottom="@dimen/vertical_rhythm_16"
+                android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

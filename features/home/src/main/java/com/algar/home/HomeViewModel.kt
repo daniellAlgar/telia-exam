@@ -41,4 +41,6 @@ class HomeViewModel(
             cityName = currentForecast.name
         ))
     }
+
+    fun pullToRefreshForecasts() = getCurrentForecast()
 }
