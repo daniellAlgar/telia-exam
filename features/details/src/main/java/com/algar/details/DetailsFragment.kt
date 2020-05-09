@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.algar.common.BaseFragment
 import com.algar.common.BaseViewModel
 import com.algar.details.databinding.FragmentDetailsBinding
@@ -38,5 +40,6 @@ class DetailsFragment : BaseFragment() {
 
     private fun configureRecyclerView() {
         binding.fiveDayForecastRecyclerView.adapter = DetailsAdapter(cityName = args.cityName)
+        binding.fiveDayForecastRecyclerView.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
     }
 }
