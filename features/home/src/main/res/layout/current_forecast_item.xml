@@ -31,12 +31,24 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:loadImage="@{currentForecast.weather.get(0).icon}"
             style="@style/CurrentForecastIcon"
-            app:layout_constraintTop_toBottomOf="@id/title"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:scaleX="1.3"
+            android:scaleY="1.3"
+            app:layout_constraintBottom_toTopOf="@id/weather"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{currentForecast.weather.get(0).capitalizedDescription}"
+            android:layout_marginBottom="@dimen/vertical_rhythm_8"
+            app:layout_constraintStart_toStartOf="@id/icon"
+            app:layout_constraintEnd_toEndOf="@id/icon"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/temperature"
@@ -44,9 +56,9 @@
             android:layout_height="wrap_content"
             android:text="@{currentForecast.main.temp}"
             style="@style/CurrentForecastTemperature"
-            app:layout_constraintTop_toTopOf="@id/icon"
-            app:layout_constraintBottom_toBottomOf="@id/icon"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
