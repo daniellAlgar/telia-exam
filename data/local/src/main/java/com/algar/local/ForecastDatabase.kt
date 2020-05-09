@@ -7,11 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.algar.local.dao.ForecastDao
 import com.algar.model.CurrentForecast
+import com.algar.model.FiveDayForecast
 
 @TypeConverters(CurrentForecastTypeConverter::class)
 @Database(
     version = 1,
-    entities = [CurrentForecast::class]
+    entities = [CurrentForecast::class, FiveDayForecast::class]
 )
 abstract class ForecastDatabase : RoomDatabase() {
 

@@ -1,6 +1,6 @@
 package com.algar.remote
 
-import com.algar.model.FiveDayForecast
+import com.algar.model.FiveDayForecastResponse
 import com.algar.model.GroupForecastResponse
 import com.algar.model.Secrets.apiKey
 import retrofit2.http.GET
@@ -12,5 +12,5 @@ interface NetworkService {
     suspend fun getGroupForecast(): GroupForecastResponse
 
     @GET("forecast?appid=$apiKey&units=metric")
-    suspend fun getFiveDayForecast(@Query("id") cityId: Int): FiveDayForecast
+    suspend fun getFiveDayForecast(@Query("id") cityId: Int): FiveDayForecastResponse
 }

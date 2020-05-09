@@ -1,5 +1,6 @@
 package com.algar.telia_exam.di
 
+import com.algar.details.di.detailsModule
 import com.algar.home.di.homeModule
 import com.algar.local.di.localModule
 import com.algar.model.Secrets.baseUrl
@@ -10,5 +11,6 @@ fun appComponent() = listOf(
     remoteModule(baseUrl = baseUrl),
     repositoryModule,
     localModule,
-    homeModule
+    homeModule,
+    detailsModule
 )

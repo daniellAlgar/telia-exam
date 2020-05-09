@@ -23,6 +23,7 @@ dependencies {
     implementation project(Modules.local)
     implementation project(Modules.model)
     implementation project(Modules.featureHome)
+    implementation project(Modules.featureDetail)
     implementation project(Modules.navigation)
     implementation project(Modules.common)
 

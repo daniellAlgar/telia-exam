@@ -24,4 +24,7 @@ dependencies {
 
     // Gson
     implementation(Libraries.gson)
+
+    // Time
+    implementation(Libraries.joda)
 }

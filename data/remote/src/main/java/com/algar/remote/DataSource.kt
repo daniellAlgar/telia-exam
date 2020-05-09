@@ -1,6 +1,6 @@
 package com.algar.remote
 
-import com.algar.model.FiveDayForecast
+import com.algar.model.FiveDayForecastResponse
 import com.algar.model.GroupForecastResponse
 import com.algar.remote.model.ApiResponse
 import kotlinx.coroutines.CoroutineDispatcher
@@ -17,7 +17,7 @@ class DataSource(
         service.getGroupForecast()
     }
 
-    suspend fun fetchFiveDayForecast(cityId: Int) : ApiResponse<FiveDayForecast> = safeApiCall(dispatcher = dispatcher) {
+    suspend fun fetchFiveDayForecast(cityId: Int) : ApiResponse<FiveDayForecastResponse> = safeApiCall(dispatcher = dispatcher) {
         service.getFiveDayForecast(cityId = cityId)
     }
 }

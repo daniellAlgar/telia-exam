@@ -14,6 +14,7 @@ object Modules {
     const val remote = ":data:remote"
     const val repository = ":data:repository"
     const val featureHome = ":features:home"
+    const val featureDetail = ":features:details"
     const val common = ":common"
     const val commonTest = ":common_test"
     const val navigation = ":navigation"
