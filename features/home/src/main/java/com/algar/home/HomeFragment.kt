@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.algar.common.BaseFragment
@@ -36,6 +37,10 @@ class HomeFragment : BaseFragment() {
 
     private fun configureRecyclerView() {
         viewBinding.forecastRecyclerView.adapter = HomeAdapter(viewModel = viewModel)
-        viewBinding.forecastRecyclerView.addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
+        viewBinding.forecastRecyclerView.addItemDecoration(getDividerItemDecorator())
+    }
+
+    private fun getDividerItemDecorator() = DividerItemDecoration(context, RecyclerView.VERTICAL).apply {
+        setDrawable(ContextCompat.getDrawable(context!!, R.drawable.divider_item_decorator)!!)
     }
 }

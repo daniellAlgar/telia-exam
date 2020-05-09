@@ -20,6 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:items="@{viewModel.forecast}"
+            android:paddingTop="@dimen/vertical_rhythm_16"
+            android:paddingBottom="@dimen/vertical_rhythm_16"
+            android:clipToPadding="false"
             android:layout_marginStart="@dimen/horizontal_rhythm_16"
             android:layout_marginEnd="@dimen/horizontal_rhythm_16"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
