@@ -47,6 +47,8 @@ class DetailsFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as AppCompatActivity).supportActionBar?.title = args.cityName
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).supportActionBar?.title = args.cityName
+        }
     }
 }

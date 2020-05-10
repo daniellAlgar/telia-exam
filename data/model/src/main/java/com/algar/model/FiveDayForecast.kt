@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class FiveDayForecast(
     @PrimaryKey
-    val id: Long,
+    val id: Int,
     val name: String,
     val list: ArrayList<FiveDayDetails>
 )

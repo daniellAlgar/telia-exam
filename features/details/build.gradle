@@ -3,6 +3,10 @@ apply from: '../../android_feature_dependencies.gradle'
 
 android {
 
+    defaultConfig {
+        testInstrumentationRunner "com.algar.common_test.FakeRunner"
+    }
+
     buildFeatures {
         dataBinding = true
     }

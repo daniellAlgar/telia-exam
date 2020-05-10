@@ -1,8 +1,6 @@
 package com.algar.common_test
 
-import com.algar.model.CurrentForecast
-import com.algar.model.MainForecast
-import com.algar.model.Weather
+import com.algar.model.*
 
 /**
  * Fake data for tests
@@ -43,5 +41,37 @@ object ForecastDataSet {
         }
 
         return output
+    }
+
+    private val fakeFiveDayMain = FiveDayMain(
+        temp = 1f,
+        feelsLike = 1f,
+        tempMin = 0f,
+        tempMax = 2f,
+        pressure = 10,
+        seaLevel = 10,
+        groundLevel = 10,
+        humidity = 10,
+        tempKf = 10f
+    )
+
+    private val fakeFiveDayDetails = FiveDayDetails(
+        dt = 1,
+        date = "2020-05-09 12:00:00",
+        weather = arrayListOf(fakeWeather),
+        main = fakeFiveDayMain
+    )
+
+    fun fakeFiveDayForecast(count: Int = 1): FiveDayForecast {
+        val details = arrayListOf<FiveDayDetails>()
+        (0 until count).mapTo(details) {
+            fakeFiveDayDetails
+        }
+
+        return FiveDayForecast(
+            id = 1,
+            list = details,
+            name = "Foo"
+        )
     }
 }
