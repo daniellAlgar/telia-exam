@@ -65,7 +65,7 @@ object ForecastDataSet {
     fun fakeFiveDayForecast(count: Int = 1): FiveDayForecast {
         val details = arrayListOf<FiveDayDetails>()
         (0 until count).mapTo(details) {
-            fakeFiveDayDetails
+            fakeFiveDayDetails.copy(dt = it.toLong())
         }
 
         return FiveDayForecast(

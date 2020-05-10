@@ -1,17 +1,20 @@
 package com.algar.details
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.algar.common_test.ForecastDataSet
 import com.algar.common_test.ForecastDataSet.fakeFiveDayForecast
+import com.algar.common_test.matchers.RecyclerViewItemCountAssertion.Companion.withItemCount
 import com.algar.details.RecyclerViewChildActions.Companion.childOfViewAtPositionWithMatcher
 import com.algar.details.di.detailsModule
 import com.algar.model.FiveDayForecast
@@ -23,6 +26,7 @@ import io.mockk.every
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import org.junit.After
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -59,13 +63,12 @@ class DetailsInstrumentationTest : KoinTest {
      * OBS: Requires to be run on api level >= 28!!!!!!!
      */
     @Test
-    fun checkThatTheWeatherDescriptionIsShown() {
-        val stubFiveDayForecast = fakeFiveDayForecast(count = 8)
+    fun recyclerViewContainsAllItemsFedToIt() {
+        val numberOfTimeStamps = 4
+        val stubFiveDayForecast = fakeFiveDayForecast(count = numberOfTimeStamps)
         val stubResource = Resource.success(data = stubFiveDayForecast)
-        val fragmentArgs = Bundle().apply {
-            putInt("cityId", stubFiveDayForecast.id)
-            putString("cityName", stubFiveDayForecast.name)
-        }
+        val fragmentArgs = getBundle(forecast = stubFiveDayForecast)
+
         every { argsMock.cityId } returns stubFiveDayForecast.id
         every { argsMock.cityName } returns stubFiveDayForecast.name
         coEvery { repositoryMock.getFiveDayForecast(cityId = stubFiveDayForecast.id) } returns MutableLiveData<Resource<FiveDayForecast>>().apply {
@@ -74,16 +77,54 @@ class DetailsInstrumentationTest : KoinTest {
 
         launchFragment(args = fragmentArgs)
 
+        onView(withId(R.id.five_day_forecast_recycler_view)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
+        onView(withId(R.id.five_day_forecast_recycler_view)).check(withItemCount(expectedCount = numberOfTimeStamps))
         onView(withId(R.id.five_day_forecast_recycler_view))
-                .check(matches(
-                        childOfViewAtPositionWithMatcher(
-                                childId = R.id.weather,
-                                position = 0,
-                                childMatcher = withText(stubFiveDayForecast.list[0].weather[0].capitalizedDescription)
-                        )
-                ))
+            .check(matches(
+                childOfViewAtPositionWithMatcher(
+                    childId = R.id.weather,
+                    position = 0,
+                    childMatcher = withText(stubFiveDayForecast.list[0].weather[0].capitalizedDescription)
+                )
+            ))
     }
 
+    /**
+     * OBS: Requires to be run on api level >= 28!!!!!!!
+     */
+    @Test
+    fun pullToRefreshFetchesNewData() {
+        val stubFiveDayForecast = fakeFiveDayForecast(count = 3)
+        val onCreateReturnValue = Resource.success(data = stubFiveDayForecast)
+        val fragmentArgs = getBundle(forecast = stubFiveDayForecast)
+        val cityId = stubFiveDayForecast.id
+
+        every { argsMock.cityId } returns cityId
+        every { argsMock.cityName } returns stubFiveDayForecast.name
+        coEvery { repositoryMock.getFiveDayForecast(cityId = cityId) } returns MutableLiveData<Resource<FiveDayForecast>>().apply {
+            postValue(onCreateReturnValue)
+        }
+
+        launchFragment(args = fragmentArgs)
+
+        val refreshForecastsCount = 10
+        val onRefreshReturnValue = Resource.success(data = fakeFiveDayForecast(count = refreshForecastsCount))
+        coEvery { repositoryMock.getFiveDayForecast(cityId = cityId) } returns MutableLiveData<Resource<FiveDayForecast>>().apply {
+            postValue(onRefreshReturnValue)
+        }
+
+        val recyclerId = R.id.five_day_forecast_recycler_view
+        onView(withId(recyclerId)).perform(ViewActions.swipeDown())
+        onView(withId(recyclerId)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
+
+        onView(withId(recyclerId)).check(withItemCount(expectedCount = refreshForecastsCount))
+        onView(withId(R.id.swipe_to_refresh)).check { view, _ ->
+            Assert.assertFalse(
+                "This view shouldn't show a refresh progress at the moment!",
+                (view as SwipeRefreshLayout).isRefreshing
+            )
+        }
+    }
 
     /**
      * Helper methods
@@ -99,5 +140,10 @@ class DetailsInstrumentationTest : KoinTest {
             Navigation.setViewNavController(fragment.requireView(), mockNavController)
         }
         return mockNavController
+    }
+
+    private fun getBundle(forecast: FiveDayForecast) = Bundle().apply {
+        putInt("cityId", forecast.id)
+        putString("cityName", forecast.name)
     }
 }
