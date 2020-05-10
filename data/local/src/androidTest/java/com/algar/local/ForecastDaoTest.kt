@@ -1,5 +1,6 @@
 package com.algar.local
 
+import com.algar.common_test.ForecastDataSet.fakeFiveDayForecast
 import com.algar.common_test.ForecastDataSet.fakeWeatherGroup
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
@@ -14,6 +15,17 @@ class ForecastDaoTest : BaseTest() {
 
         forecastDao.getCurrentForecast().observeForever { forecasts ->
             assertEquals(numberOfCities, forecasts.size)
+        }
+    }
+
+    @Test
+    fun getFiveDayForecastFromDatabase() = runBlocking {
+        val numberOfTimeStamps = 10
+        val fakeFiveDayForecast = fakeFiveDayForecast(count = numberOfTimeStamps)
+        forecastDao.insert(fiveDayForecast = fakeFiveDayForecast)
+
+        forecastDao.getFiveDayForecast(id = fakeFiveDayForecast.id).observeForever { forecasts ->
+            assertEquals(numberOfTimeStamps, forecasts.list.size)
         }
     }
 
