@@ -1,9 +1,11 @@
 apply plugin: 'com.android.application'
 apply from: '../android_commons.gradle'
+apply from: '../android_commons_test.gradle'
 
 android {
     defaultConfig {
         applicationId ApplicationId.id
+        testInstrumentationRunner "com.algar.common_test.FakeRunner"
     }
 
     buildFeatures {
