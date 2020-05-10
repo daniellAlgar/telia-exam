@@ -60,7 +60,7 @@ class DetailsInstrumentationTest : KoinTest {
     }
 
     /**
-     * OBS: Requires to be run on api level >= 28!!!!!!!
+     * OBS: Requires to be run on api level >= 28!!!!!!! Bug in Mockk.
      */
     @Test
     fun recyclerViewContainsAllItemsFedToIt() {
@@ -90,7 +90,7 @@ class DetailsInstrumentationTest : KoinTest {
     }
 
     /**
-     * OBS: Requires to be run on api level >= 28!!!!!!!
+     * OBS: Requires to be run on api level >= 28!!!!!!! Bug in Mockk.
      */
     @Test
     fun pullToRefreshFetchesNewData() {
