@@ -6,6 +6,9 @@ dependencies {
     // Modules
     implementation project(Modules.model)
 
+    implementation TestLibraries.espresso
+    implementation AndroidLibraries.recyclerView
+
     // Test
     implementation TestLibraries.androidTestRunner
 

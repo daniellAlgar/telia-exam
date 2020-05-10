@@ -1,4 +1,4 @@
-package com.algar.home.helpers
+package com.algar.common_test.matchers
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -26,9 +26,7 @@ class RecyclerViewItemCountAssertion private constructor(private val matcher: Ma
     companion object {
 
         fun withItemCount(expectedCount: Int): RecyclerViewItemCountAssertion {
-            return withItemCount(
-                `is`(expectedCount)
-            )
+            return withItemCount(`is`(expectedCount))
         }
 
         fun withItemCount(matcher: Matcher<Int>): RecyclerViewItemCountAssertion {

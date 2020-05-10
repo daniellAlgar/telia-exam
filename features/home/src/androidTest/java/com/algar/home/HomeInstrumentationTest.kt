@@ -13,7 +13,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.algar.common_test.ForecastDataSet.fakeWeatherGroup
 import com.algar.home.di.homeModule
-import com.algar.home.helpers.RecyclerViewItemCountAssertion.Companion.withItemCount
+import com.algar.common_test.matchers.RecyclerViewItemCountAssertion.Companion.withItemCount
 import com.algar.model.CurrentForecast
 import com.algar.repository.AppDispatchers
 import com.algar.repository.WeatherRepository
