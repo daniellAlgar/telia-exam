@@ -47,6 +47,8 @@ class HomeFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.home_toolbar_title)
+        if (activity is AppCompatActivity) {
+            (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.home_toolbar_title)
+        }
     }
 }
